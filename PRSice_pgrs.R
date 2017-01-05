@@ -1,11 +1,12 @@
-require(devtools)
-install_version("ggplot2", version = "2.1.0", repos = "http://cran.us.r-project.org")
+#install.packages("http://cran.r-project.org/src/contrib/Archive/ggplot2/ggplot2_2.1.0.tar.gz", repos=NULL, type="source")
+#library(ggplot2)
+#packageVersion("ggplot2")
 
+library(ggplot2)
 library(batch)
 library(fmsb)
 library(gtx)
 library(plyr)
-library(ggplot2)
 
 start.time <- proc.time()[3]
 options(echo = FALSE)
@@ -33,12 +34,12 @@ order.cols <- "SNP,CHR,BP,A1,A2,OR,SE,P"
 supplied.order <- F
 
 # phenotype options
-pheno.file <-   NA
-binary.target <-  T
+# pheno.file <-   NA
+binary.target <-  F
 
 # covariate options
 covary <- T
-covariates <- "Sex,Age,SexAge,Age2,Site"
+covariates <- "Sex,Age"
 user.covariate.file <- "CovariateFile_AS.txt"
 ancestry.dim <- "MDS"
 
@@ -46,8 +47,8 @@ ancestry.dim <- "MDS"
 ggfig <-  T
 barchart.levels <- "0.001, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5"
 barpalatte <- "YlOrRd"
-best.thresh.on.bar <- F
-scatter.R2 <- F						
+best.thresh.on.bar <- T
+scatter.R2 <- T						
 figname <- "PRSice"
 bar.col.is.pval <- T
 bar.col.is.pval.lowcol <- "dodgerblue"
@@ -119,7 +120,7 @@ num.quantiles <- 5
 quant.ref <- 3
 
 mend.score <- F
-mend.score.len <- 1000
+mend.score.len <- 100
 score.at.1 <- F
 report.individual.scores <- T
 report.best.score.only <- F
@@ -132,18 +133,18 @@ clump.ref <- NA
 size.targ <- NA
 
 # multiple phenotype options
-multiple.target.phenotypes <- F
-target.phenotypes <-  NA #  "V2,V3"
-target.phenotypes.binary <- NA # "T,T"  ## NB:: 'QT' or 'BIN' 
+multiple.target.phenotypes <- T
+target.phenotypes <-  "SCZneg,SCZpos,Pfact,Impuls,Instab"
+target.phenotypes.binary <- "F,F,F,F,F"  ## NB:: 'QT' or 'BIN' 
 multiple.base.phenotypes <- F
 base.phenotypes.names <- NA  ## sub in for PHEN.NAME
 heat.r2 <- F
 
 # empirical p-value options:
-n.emp.perms <- 100
-emp.pval <- F
-report.perm.phen <- F
-report.perm.pvals <- F
+n.emp.perms <- 10000
+emp.pval <- T
+report.perm.phen <- T
+report.perm.pvals <- T
 emp.alpha <- F
 
 if(!fastscore){
