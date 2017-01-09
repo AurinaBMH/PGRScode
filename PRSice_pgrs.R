@@ -47,8 +47,8 @@ ancestry.dim <- "MDS"
 ggfig <-  T
 barchart.levels <- "0.001, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5"
 barpalatte <- "YlOrRd"
-best.thresh.on.bar <- T
-scatter.R2 <- T						
+best.thresh.on.bar <- F
+scatter.R2 <- F					
 figname <- "PRSice"
 bar.col.is.pval <- T
 bar.col.is.pval.lowcol <- "dodgerblue"
@@ -142,9 +142,9 @@ heat.r2 <- F
 
 # empirical p-value options:
 n.emp.perms <- 10000
-emp.pval <- T
-report.perm.phen <- T
-report.perm.pvals <- T
+emp.pval <- F
+report.perm.phen <- F
+report.perm.pvals <- F
 emp.alpha <- F
 
 if(!fastscore){
